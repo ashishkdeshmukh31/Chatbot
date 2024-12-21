@@ -1,0 +1,202 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: linear-gradient(135deg, #E3F2FD, #E0F7FA);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chatbot-toggler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  outline: none;
+  border: none;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #724ae8, #9b6cfb);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+body.show-chatbot .chatbot-toggler {
+  transform: rotate(90deg);
+}
+.chatbot-toggler:hover {
+  transform: scale(1.1);
+}
+.chatbot-toggler span {
+  color: #fff;
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.chatbot {
+  position: fixed;
+  right: 35px;
+  bottom: 90px;
+  width: 420px;
+  background: linear-gradient(135deg, #fff, #f9f9f9);
+  border-radius: 20px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1), 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+body.show-chatbot .chatbot {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.chatbot header {
+  padding: 20px 0;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, #724ae8, #9b6cfb);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+header h2 {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+.chatbox {
+  overflow-y: auto;
+  height: 510px;
+  padding: 30px 20px 100px;
+}
+.chatbox .chat {
+  display: flex;
+  list-style: none;
+}
+.chatbox .outgoing {
+  margin: 15px 0;
+  justify-content: flex-end;
+  animation: slideIn 0.3s ease;
+}
+.chatbox .incoming span {
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  cursor: default;
+  text-align: center;
+  line-height: 36px;
+  align-self: flex-end;
+  background: linear-gradient(135deg, #724ae8, #9b6cfb);
+  border-radius: 50%;
+  margin: 0 10px 7px 0;
+}
+.chatbox .chat p {
+  white-space: pre-wrap;
+  padding: 14px 18px;
+  border-radius: 12px 12px 0 12px;
+  max-width: 75%;
+  color: #fff;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #724ae8, #9b6cfb);
+}
+.chatbox .incoming p {
+  border-radius: 12px 12px 12px 0;
+  color: #333;
+  background: #f2f2f2;
+  animation: fadeIn 0.3s ease;
+}
+.chatbox .chat p.error {
+  color: #721c24;
+  background: #f8d7da;
+}
+.chat-input {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 10px 20px;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+.chat-input textarea {
+  height: 55px;
+  width: 100%;
+  border: 2px solid #ccc;
+  outline: none;
+  resize: none;
+  max-height: 180px;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border 0.2s ease;
+}
+.chat-input textarea:focus {
+  border: 2px solid #724ae8;
+}
+.chat-input span {
+  align-self: flex-end;
+  color: #724ae8;
+  cursor: pointer;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  transition: color 0.2s ease;
+}
+.chat-input span:hover {
+  color: #9b6cfb;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 490px) {
+  .chatbot-toggler {
+    right: 20px;
+    bottom: 20px;
+  }
+  .chatbot {
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border-radius: 0;
+    width: 100%;
+  }
+  .chatbox {
+    height: 90%;
+    padding: 25px 15px 100px;
+  }
+  .chat-input {
+    padding: 10px 15px;
+  }
+}
